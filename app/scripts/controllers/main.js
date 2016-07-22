@@ -9,8 +9,12 @@
  */
 angular
   .module('marinaFrontendApp')
-  .controller('AppCtrl', ['$scope', '$window', '$auth',
-    function ($scope, $window, $auth) {
+  .controller('AppCtrl', ['$scope', '$window', '$auth', 'globals',
+    function ($scope, $window, $auth, globals) {
+
+      globals.loadGlobalConfig().then(function(data){
+        $scope.config = data;
+      });
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com

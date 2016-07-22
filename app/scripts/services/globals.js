@@ -1,6 +1,6 @@
 angular.module('marinaFrontendApp')
- .factory('globals', ['marinaApi', '$rootScope',
-   function ($resource, $rootScope) {
+ .factory('globals', ['marinaApi', '$rootScope', '$q', '$http',
+   function ($resource, $rootScope, $q, $http) {
 
      var service = {
        availableNamespaces: function() {
@@ -14,6 +14,20 @@ angular.module('marinaFrontendApp')
 
        lastSuccessfulBuild: function(repository) {
          return repository.builds ? _.reverse(_.sortBy(repository.builds.filter(function(b){return b.state == "success";}), function(b){return b.end}))[0] : null;
+       },
+       loadGlobalConfig: function()
+       {
+         var deferred = $q.defer();
+
+         $http.get('/theme/config.json').
+           success(function (data) {
+             deferred.resolve(data);
+           }).
+           error(function () {
+             deferred.resolve(null);
+           });
+         return deferred.promise;
+
        }
      };
      return service;
