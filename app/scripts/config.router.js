@@ -138,7 +138,7 @@ angular.module('marinaFrontendApp')
         .state('auth', {
           abstract: true,
           url: '/auth',
-          templateUrl: 'views/app.html'
+          templateUrl: 'views/auth.html'
         })
         .state('auth.register', {
           url: '/register',
