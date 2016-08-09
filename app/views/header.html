@@ -30,11 +30,7 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown" dropdown  ng-if="user">
       <a href class="dropdown-toggle clear" dropdown-toggle>
-              <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="images/captain.png" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span-->
-        <span class="hidden-sm hidden-md">Create</span> <b class="caret"></b>
+        <span>Create</span> <b class="caret"></b>
       </a>
       <!-- dropdown -->
       <ul class="dropdown-menu animated fadeInRight w">
@@ -49,11 +45,7 @@
     </li>
     <li class="dropdown" dropdown>
       <a href class="dropdown-toggle clear" dropdown-toggle>
-              <!--span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                <img src="images/captain.png" alt="...">
-                <i class="on md b-white bottom"></i>
-              </span-->
-        <span class="hidden-sm hidden-md">{{user.name}}</span> <b class="caret"></b>
+        <span>{{user.name}}</span> <b class="caret"></b>
       </a>
       <!-- dropdown -->
       <ul class="dropdown-menu animated fadeInRight w">
@@ -62,13 +54,6 @@
             <span>Profile</span>
           </a>
         </li>
-        <!--
-        <li>
-          <a ui-sref="app.docs">
-            Help
-          </a>
-        </li>
-        -->
         <li class="divider"></li>
         <li>
           <a ng-click="signOut()">Logout</a>
