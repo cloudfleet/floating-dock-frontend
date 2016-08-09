@@ -18,7 +18,7 @@
     <li class="line dk"></li>
 
     <li>
-        <a ui-sref="app.search">
+        <a ui-sref="app.repository_list({owner: user.name})">
             <img
               class="btn-icon"
               style="margin-top: 7px"
@@ -33,7 +33,7 @@
 
 
     <li ng-repeat="organization in user.organizations">
-        <a ui-sref="app.search">
+      <a ui-sref="app.repository_list({owner: organization.name})">
             <img
               class="btn-icon"
               style="margin-top: 7px"
