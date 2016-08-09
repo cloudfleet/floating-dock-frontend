@@ -3,12 +3,48 @@
 
     <li ui-sref-active="active">
         <a ui-sref="app.dashboard">
-            <i class="glyphicon  glyphicon-dashboard icon text-muted"></i>
+            <i class="fa fa-dashboard text-muted"></i>
             <span>Dashboard</span>
         </a>
     </li>
 
+    <li>
+        <a ui-sref="app.search">
+            <i class="fa fa-search text-muted"></i>
+            <span>Search</span>
+        </a>
+    </li>
+
     <li class="line dk"></li>
+
+    <li>
+        <a ui-sref="app.search">
+            <img
+              class="btn-icon"
+              style="margin-top: 7px"
+              ng-src="https://sigil.cupcake.io/{{user.name}}"
+              alt="{{user.name}}"
+              title="{{user.name}}"
+              >
+            </img>
+            <span>{{user.name}}</span>
+        </a>
+    </li>
+
+
+    <li ng-repeat="organization in user.organizations">
+        <a ui-sref="app.search">
+            <img
+              class="btn-icon"
+              style="margin-top: 7px"
+              ng-src="https://sigil.cupcake.io/{{organization.name}}"
+              alt="{{organization.name}}"
+              title="{{organization.name}}"
+              >
+            </img>
+            <span>{{organization.name}}</span>
+        </a>
+    </li>
 
 
 </ul>
