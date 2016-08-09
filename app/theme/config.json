@@ -1,6 +1,10 @@
 {
   "strings": {
     "instance_name": "MarinaIO",
-    "instance_description": "marina.io - the home of ARM containers"
+    "instance_description": "marina.io - the home of ARM containers",
+    "instance_description_long": "ARM is still not officially supported by Docker. Also the Docker Hub does not support containers in different architectures. However most containers are architecture agnostic and can be built for any architecture. With ARM servers on the horizon marina.io strives to reproduce the wonderful ecosystem of the Docker Hub container by container, to make it possible to build your containers for any architecture."
+  },
+  "settings": {
+    "register_enabled": true
   }
 }
