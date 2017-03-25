@@ -40,6 +40,32 @@
                           </tr>
                         </table>
                     </div>
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b b-light">
+                          <h2 class="panel-title">Repository Tags</h2>
+                        </div>
+                        <table class="table table-striped">
+                          <tr>
+                            <th>Name</th>
+                            <th>Reference</th>
+                            <th>Dockerfile Path</th>
+                            <th ng-if="canEdit()"></th>
+                          <tr>
+                          <tr ng-repeat="tag in repository.repository_tags">
+                            <td>{{tag.name}}</td>
+                            <td>{{tag.reference}}</td>
+                            <td>{{tag.docker_file_path}}</td>
+                            <td ng-if="canEdit()">
+                              <a
+                                ng-click="buildTag(tag.id)"
+                                class="btn btn-primary"
+                                >
+                                Build
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">

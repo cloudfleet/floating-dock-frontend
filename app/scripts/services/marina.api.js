@@ -29,13 +29,25 @@ angular.module('marinaFrontendApp')
           '/api/v1/repos/:namespace/:name',
           {namespace: '@owner_name', name: '@name'},
           {create: {url: '/api/v1/repos', method: 'POST'},
-           query: {url: '/api/v1/repos/:namespace', method: 'GET', isArray: true}
+           query: {url: '/api/v1/repos/:namespace', method: 'GET', isArray: true},
           }
         ),
-
         Dashboard: $resource(
           '/api/v1/dashboard'
         ),
+
+        buildRepositoryTag: function(repository, tag_id) {
+          var deferred = $q.defer();
+
+          $http.post('/api/v1/repos/' + repository.owner_name + '/' + repository.name + '/tags/' + tag_id + '/build').
+            success(function (data) {
+              deferred.resolve(data);
+            }).
+            error(function () {
+              deferred.resolve(null);
+            });
+          return deferred.promise;
+        },
 
         getBuildLogs: function (full_name, build_id) {
 

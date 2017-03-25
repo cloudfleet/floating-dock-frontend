@@ -9,11 +9,10 @@
  */
 angular.module('marinaFrontendApp')
   .controller('RepositoryCtrl',
-  [ '$scope', '$stateParams', '$state','repository',
-    function ($scope, $stateParams, $state, repository) {
+  [ '$scope', '$stateParams', '$state','repository', 'marinaApi',
+    function ($scope, $stateParams, $state, repository, marinaApi) {
 
       $scope.repository = repository;
-      console.log(repository);
 
       $scope.lastBuild = function() {
         if($scope.repository["builds"]) {
@@ -73,5 +72,9 @@ angular.module('marinaFrontendApp')
           $state.go("app.repository", {owner: $scope.repository.owner_name, name: $scope.repository.name});
         });
       };
+      $scope.buildTag = function(index)
+      {
+        marinaApi.buildRepositoryTag($scope.repository, index).then(function(){$scope.repository.$get({namespace: $scope.repository.owner_name,  name: $scope.repository.name})});
+      }
 
   }]);
