@@ -55,12 +55,19 @@ angular.module('marinaFrontendApp')
       };
       $scope.addRepositoryTag = function()
       {
-        $scope.repository.repository_tags.push(
-          {
-            docker_file_path: "/",
-            name: "latest",
-            reference: "master"
-          });
+        var new_tag = {
+                  docker_file_path: "/",
+                  name: "latest",
+                  reference: "master"
+                };
+        if($scope.repository.repository_tags)
+        {
+          $scope.repository.repository_tags.push(new_tag);
+        }
+        else
+        {
+          $scope.repository.repository_tags = [new_tag];
+        }
       };
       $scope.removeRepositoryTag = function(index)
       {
