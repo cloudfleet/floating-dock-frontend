@@ -80,7 +80,7 @@
                             <th>End</th>
                             <th>Logs</th>
                           <tr>
-                          <tr ng-repeat="build in repository.builds | orderBy:'-end'">
+                          <tr ng-repeat="build in repository.builds | orderBy:'-start'">
                             <td><span class="label label-{{build | statusBadgeClass}}">{{build.state}}</span></td>
                             <td>{{build.id}}</td>
                             <td><span am-time-ago="build.start"></span></td>

@@ -18,11 +18,11 @@ angular.module('marinaFrontendApp')
     return function (build) {
       if(build)
       {
-        if(build.state == "success")
+        if(build.state == "pushed")
         {
           return "success";
         }
-        else if(build.state == "failure") {
+        else if(build.state == "failed") {
           return "danger";
         }
         else {
