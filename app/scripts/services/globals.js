@@ -9,11 +9,11 @@ angular.module('marinaFrontendApp')
          return list;
        },
        lastBuild: function(repository) {
-         return repository.builds ? _.reverse(_.sortBy(repository.builds, function(b){return b.end}))[0] : null;
+         return repository.builds ? _.reverse(_.sortBy(repository.builds, function(b){return b.updated_at}))[0] : null;
        },
 
        lastSuccessfulBuild: function(repository) {
-         return repository.builds ? _.reverse(_.sortBy(repository.builds.filter(function(b){return b.state == "success";}), function(b){return b.end}))[0] : null;
+         return repository.builds ? _.reverse(_.sortBy(repository.builds.filter(function(b){return b.state == "pushed";}), function(b){return b.end}))[0] : null;
        },
        loadGlobalConfig: function()
        {
