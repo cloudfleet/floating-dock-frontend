@@ -17,7 +17,7 @@ angular.module('marinaFrontendApp')
           $rootScope.$on('auth:login-error', function(ev, message) {
             alert(
               "Registration failed: \n" +
-              "-------------------- \n"
+              "-------------------- \n" +
               message.errors.full_messages.join("\n")
             );
           });
@@ -33,7 +33,7 @@ angular.module('marinaFrontendApp')
           $rootScope.$on('auth:registration-email-error', function(ev, message) {
               alert(
                 "Registration failed: \n" +
-                "-------------------- \n"
+                "-------------------- \n" +
                 message.errors.full_messages.join("\n")
               );
           });
