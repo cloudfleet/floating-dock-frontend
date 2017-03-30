@@ -14,8 +14,12 @@ angular.module('marinaFrontendApp')
               $state.go('app.dashboard');
           });
 
-          $rootScope.$on('auth:login-error', function(ev, reason) {
-              alert('auth failed because', reason.errors[0]);
+          $rootScope.$on('auth:login-error', function(ev, message) {
+            alert(
+              "Registration failed: \n" +
+              "-------------------- \n"
+              message.errors.full_messages.join("\n")
+            );
           });
 
           $rootScope.$on('auth:logout-success', function(ev) {
@@ -27,7 +31,11 @@ angular.module('marinaFrontendApp')
               $state.go('index');
           });
           $rootScope.$on('auth:registration-email-error', function(ev, message) {
-              alert("Registration failed: " + reason.errors[0]);
+              alert(
+                "Registration failed: \n" +
+                "-------------------- \n"
+                message.errors.full_messages.join("\n")
+              );
           });
         }
     ]);
