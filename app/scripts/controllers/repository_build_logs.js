@@ -12,11 +12,12 @@ angular.module('marinaFrontendApp')
   [ '$scope', '$stateParams','marinaApi',
     function ($scope, $stateParams, marinaApi) {
 
-      $scope.repository_full_name = $stateParams.owner + "/" + $stateParams.name;
+      $scope.repository_owner_name = $stateParams.owner;
+      $scope.repository_name = $stateParams.name;
       $scope.build_id = $stateParams.build_id;
 
 
-      marinaApi.getBuildLogs($scope.repository_full_name, $scope.build_id).then(function(data){
+      marinaApi.getBuildLogs($scope.repository_owner_name, $scope.repository_name, $scope.build_id).then(function(data){
         $scope.logs = data;
       });
 

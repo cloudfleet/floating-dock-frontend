@@ -49,11 +49,11 @@ angular.module('marinaFrontendApp')
           return deferred.promise;
         },
 
-        getBuildLogs: function (full_name, build_id) {
+        getBuildLogs: function (owner_name, name, build_id) {
 
           var deferred = $q.defer();
 
-          $http.get('/api/v1/repos/' + full_name + '/builds/' + build_id + '/logs').
+          $http.get('/api/v1/repos/' + owner_name + '/' + name + '/builds/' + build_id + '/logs').
             success(function (data) {
               deferred.resolve(data);
             }).

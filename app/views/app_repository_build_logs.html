@@ -5,13 +5,21 @@
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">{{repository_full_name}} - {{build_id}}</h1>
+                    <h1 class="m-n font-thin h3 text-black">
+                      <a ui-sref="app.repository_list({owner: repository.owner_name})">
+                        {{repository_owner_name}}
+                      </a>
+                      /
+                      <a ui-sref="app.repository({owner: repository_owner_name, name: repository_name})">
+                        {{repository_name}}
+                      </a>
+                      - {{build_id}}
+                    </h1>
                 </div>
                 <div class="col-sm-6 text-right hidden-xs">
 
                     <div class="inline text-left">
-                        <div class="m-b-xs"><i class="fa fa-btc"></i>
-                        </div>
+
                     </div>
                 </div>
             </div>
