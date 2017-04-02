@@ -43,8 +43,8 @@
                                 {{repository.owner_name}}/{{repository.name}}
                               </a>
                             </td>
-                            <td><span am-time-ago="globals.lastBuild(repository).end"></span></td>
-                            <td><span am-time-ago="globals.lastSuccessfulBuild(repository).end"></span></td>
+                            <td><span am-time-ago="globals.lastBuild(repository).updated_at"></span></td>
+                            <td><span am-time-ago="globals.lastSuccessfulBuild(repository).updated_at"></span></td>
                           </tr>
                         </table>
                     </div>
