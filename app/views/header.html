@@ -28,8 +28,8 @@
 
   <!-- nabar right -->
   <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown" dropdown  ng-if="user">
-      <a href class="dropdown-toggle clear" dropdown-toggle>
+    <li class="dropdown" ng-if="user">
+      <a href class="dropdown-toggle clear" data-toggle="dropdown" role="button">
         <span>Create</span> <b class="caret"></b>
       </a>
       <!-- dropdown -->
@@ -44,7 +44,7 @@
       <!-- / dropdown -->
     </li>
     <li class="dropdown" dropdown>
-      <a href class="dropdown-toggle clear" dropdown-toggle>
+      <a href class="dropdown-toggle clear" data-toggle="dropdown" role="button">
         <span>{{user.name}}</span> <b class="caret"></b>
       </a>
       <!-- dropdown -->
