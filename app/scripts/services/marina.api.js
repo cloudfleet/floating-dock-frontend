@@ -22,7 +22,10 @@ angular.module('marinaFrontendApp')
 
         Organization: $resource(
           '/api/v1/organizations/:id',
-          {id: '@id'}
+          {id: '@id'},
+          {
+            addMember: {method: 'POST', url: '/api/v1/organizations/:id/add_user'}
+          }
         ),
 
         Repository: $resource(
