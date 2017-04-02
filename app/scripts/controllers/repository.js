@@ -22,7 +22,7 @@ angular.module('marinaFrontendApp')
               {
                 return 0;
               }
-              return b1.end < b2.end ? 1 : -1;
+              return b1.updated_at < b2.updated_at ? 1 : -1;
             })
             [0]
         }
@@ -40,7 +40,7 @@ angular.module('marinaFrontendApp')
               {
                 return 0;
               }
-              return b1.end < b2.end ? 1 : -1;
+              return b1.updated_at < b2.updated_at ? 1 : -1;
             })
             [0]
         }
