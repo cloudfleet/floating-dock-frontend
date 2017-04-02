@@ -5,7 +5,11 @@
         <div class="bg-light lter b-b wrapper-md">
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
-                    <h1 class="m-n font-thin h3 text-black">{{organization.name}}</h1>
+                    <h1 class="m-n font-thin h3 text-black">
+                      <a ui-sref="app.repository_list({owner: organization.name})">
+                        {{organization.name}}
+                      </a>
+                    </h1>
                 </div>
             </div>
         </div>

@@ -6,10 +6,11 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <h1 class="m-n font-thin h3 text-black">
-                      <a ui-sref="app.repository_list({owner: repository_owner_name})">
-                        {{repository_owner_name}}
-                      </a>/<a ui-sref="app.repository({owner: repository_owner_name, name: repository_name})">
-                        {{repository_name}}
+                      <a
+                        ui-sref="app.repository_list({owner: repository_owner_name})"
+                        >{{repository_owner_name}}</a>/<a
+                        ui-sref="app.repository({owner: repository_owner_name, name: repository_name})"
+                        >{{repository_name}}
                       </a>
                       - {{build_id}}
                     </h1>
