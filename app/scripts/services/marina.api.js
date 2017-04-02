@@ -24,7 +24,8 @@ angular.module('marinaFrontendApp')
           '/api/v1/organizations/:id',
           {id: '@id'},
           {
-            addMember: {method: 'POST', url: '/api/v1/organizations/:id/add_user'}
+            addMember: {method: 'POST', url: '/api/v1/organizations/:id/add_user'},
+            removeMember: {method: 'DELETE', url: '/api/v1/organizations/:id/remove_user'}
           }
         ),
 

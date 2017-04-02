@@ -21,6 +21,14 @@ angular.module('marinaFrontendApp')
         });
       };
 
+      $scope.showApiKey = function() {
+        $scope.api_key = organization.api_key;
+      }
+
+      $scope.hideApiKey = function() {
+        $scope.api_key = '';
+      }
+
       $scope.getPotentialMembers = function(text)
       {
         return $http.get('/api/v1/users/names', {
@@ -31,6 +39,11 @@ angular.module('marinaFrontendApp')
           return response.data;
         });
       };
+
+      $scope.removeMember = function(member)
+      {
+        organization.$removeMember({user_id: member.id}).then(organization.$get());
+      }
 
       $scope.addMember = function(name)
       {
