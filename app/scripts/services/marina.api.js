@@ -39,6 +39,14 @@ angular.module('marinaFrontendApp')
           '/api/v1/dashboard'
         ),
 
+        refreshUser: function()
+        {
+          if(!$rootScope.user.$get) {
+            $rootScope.user = new service.User($rootScope.user);
+          }
+          return $rootScope.user.$get();
+        },
+
         buildRepositoryTag: function(repository, tag_id) {
           var deferred = $q.defer();
 
