@@ -3,8 +3,12 @@ angular.module('marinaFrontendApp')
    function ($resource, $rootScope, $q, $http) {
 
      var service = {
+       adminOrganizations: function()
+       {
+         return $rootScope.user.organizations.filter(function(o) {return o.role === 'admin'}).map(function(o){return o.name});
+       },
        availableNamespaces: function() {
-         var list = $rootScope.user.organizations.filter(function(o) {return o.role = 'admin'}).map(function(o){return o.name});
+         var list = service.adminOrganizations();
          list.unshift($rootScope.user.name);
          return list;
        },
