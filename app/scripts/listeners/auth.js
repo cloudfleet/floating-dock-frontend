@@ -15,10 +15,9 @@ angular.module('marinaFrontendApp')
           });
 
           $rootScope.$on('auth:login-error', function(ev, message) {
-            alert(
-              "Registration failed: \n" +
-              "-------------------- \n" +
-              message.errors.full_messages.join("\n")
+            $rootScope.globals.showMessage(
+              "Login failed",
+              message.errors
             );
           });
 
@@ -27,15 +26,17 @@ angular.module('marinaFrontendApp')
           });
 
           $rootScope.$on('auth:registration-email-success', function(ev, message) {
-              alert("A registration email was sent to " + message.email);
-              $state.go('index');
+            $rootScope.globals.showMessage(
+              "Registration successful",
+              ["A registration email was sent to " + message.email]
+            );
+            $state.go('index');
           });
           $rootScope.$on('auth:registration-email-error', function(ev, message) {
-              alert(
-                "Registration failed: \n" +
-                "-------------------- \n" +
-                message.errors.full_messages.join("\n")
-              );
+            $rootScope.globals.showMessage(
+              "Registration failed",
+              message.errors.full_messages
+            );
           });
         }
     ]);
