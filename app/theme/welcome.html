@@ -1,0 +1,80 @@
+<div class="col-xs-6">
+  <h2>Why?</h2>
+  <p>
+    Docker Hub does not support builds for different architectures. However most
+    containers are architecture agnostic and can be built for any architecture.
+  </p>
+  <p>
+    With ARM servers on the horizon marina.io strives to reproduce the wonderful
+    ecosystem of the Docker Hub container by container, to make it easy to
+    build your containers for any architecture.
+  </p>
+  <h2>How?</h2>
+  <p>
+    Before building the container, we adapt the <code>FROM</code> line to use
+    the proper <code>armhf</code> container as a parent.
+  </p>
+  <p>
+    <ul>
+      <li>
+        Where possible we use the <a href="https://hub.docker.com/u/armhf/">
+        official <code>armhf</code> containers</a> by Docker.
+      </li>
+      <li>
+        If the right one is not available we try to rebuild them from the
+        <a href="https://github.com/docker-library/official-images/">library
+        specs</a>.
+      </li>
+      <li>
+        If this is also not possible we build an image that is as similar as
+        possible. You can suggest more images or improvements to existing ones
+        on <a href="https://github.com/marinaio/library/">Github</a>.
+      </li>
+    </ul>
+  </p>
+</div>
+<div class="col-xs-6">
+  <h2>Features</h2>
+  <dl>
+    <dt>
+      Automated Builds for <code>armhf</code>
+    </dt>
+    <dd>
+      <p>
+        For now marina.io builds containers for the architecture
+        <code>armhf</code>. That is the architecture the Raspberry Pi operating
+        systems are running on.
+        <br>
+        The images are build on our little Raspberry Pi farm.
+      </p>
+    </dd>
+    <dt>
+      Accepts Webhooks from GitHub
+    </dt>
+    <dd>
+      <p>
+        Simply setup a webhook on your Github repository or organization and
+        atomatically trigger a build on each commit.
+      </p>
+    </dd>
+    <dt>
+      Replicates Structure of Docker Hub
+    </dt>
+    <dd>
+      <p>
+        Easily create automated builds the same way you do on Docker Hub.
+      </p>
+    </dd>
+    <dt>
+      Reuse your Dockerfile
+    </dt>
+    <dd>
+      <p>
+        You don't have to change anything in your code.
+        <br>
+        Just reuse your Dockerfile and our build system takes care of the rest.
+        If it doesn't work feel free to reach out to us so we can make it work.
+      </p>
+    </dd>
+  </dl>
+</div>
