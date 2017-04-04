@@ -13,7 +13,15 @@ angular.module('marinaFrontendApp')
           $rootScope.$on('auth:login-success', function(ev, user) {
               $state.go('app.dashboard');
           });
-
+          $rootScope.$on('auth:password-change-success', function() {
+              $state.go('app.dashboard');
+          });
+          $rootScope.$on('auth:password-change-error', function(ev, message) {
+            $rootScope.globals.showMessage(
+              "Login failed",
+              message.errors.full_messages
+            );
+          });
           $rootScope.$on('auth:login-error', function(ev, message) {
             $rootScope.globals.showMessage(
               "Login failed",
@@ -27,16 +35,34 @@ angular.module('marinaFrontendApp')
 
           $rootScope.$on('auth:registration-email-success', function(ev, message) {
             $rootScope.globals.showMessage(
-              "Registration successful",
+              "Registration Successful",
               ["A registration email was sent to " + message.email]
             );
             $state.go('index');
           });
           $rootScope.$on('auth:registration-email-error', function(ev, message) {
             $rootScope.globals.showMessage(
-              "Registration failed",
+              "Registration Failed",
               message.errors.full_messages
             );
           });
+          $rootScope.$on('auth:password-reset-request-success', function(ev, message) {
+            $rootScope.globals.showMessage(
+              "Password Reset Successful",
+              ["A reset email was sent to " + message.email]
+            );
+            $state.go('index');
+          });
+          $rootScope.$on('auth:password-reset-request-error', function(ev, message) {
+            $rootScope.globals.showMessage(
+              "Password Reset Failed",
+              message.errors.full_messages
+            );
+          });
+          $rootScope.$on('auth:password-reset-confirm-success', function() {
+            $state.go('auth.update_password');
+          });
+
+
         }
     ]);

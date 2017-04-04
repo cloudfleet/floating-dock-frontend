@@ -148,6 +148,14 @@ angular.module('marinaFrontendApp')
           url: '/login',
           templateUrl: 'views/auth_login.html'
         })
+        .state('auth.reset_password', {
+          url: '/reset-password',
+          templateUrl: 'views/auth_reset_password.html'
+        })
+        .state('auth.update_password', {
+          url: '/update-password',
+          templateUrl: 'views/auth_update_password.html'
+        })
 
 
     }
