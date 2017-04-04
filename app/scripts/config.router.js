@@ -59,6 +59,18 @@ angular.module('marinaFrontendApp')
             ]
           }
         })
+        .state('app.repository_new', {
+          url: '/repos/new',
+          templateUrl: 'views/app_repository_form.html',
+          controller: 'RepositoryCtrl',
+          resolve: {
+            repository: ['marinaApi',
+              function(marinaApi) {
+                return new marinaApi.Repository;
+              }
+            ]
+          }
+        })
         .state('app.repository', {
           url: '/repos/:owner/:name',
           templateUrl: 'views/app_repository.html',
@@ -91,18 +103,6 @@ angular.module('marinaFrontendApp')
             repository: ['marinaApi', '$stateParams',
               function(marinaApi, $stateParams) {
                 return marinaApi.Repository.get({namespace: $stateParams.owner,  name: $stateParams.name});
-              }
-            ]
-          }
-        })
-        .state('app.repository_new', {
-          url: '/repos/new',
-          templateUrl: 'views/app_repository_form.html',
-          controller: 'RepositoryCtrl',
-          resolve: {
-            repository: ['marinaApi',
-              function(marinaApi) {
-                return new marinaApi.Repository;
               }
             ]
           }
