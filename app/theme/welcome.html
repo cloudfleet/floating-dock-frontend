@@ -21,8 +21,9 @@
   <p>
     <ul>
       <li>
-        Where possible we use the <a href="https://hub.docker.com/u/armhf/">
-        official <code>armhf</code> containers</a> by Docker.
+        Where possible we use the official <a href="https://hub.docker.com/u/armhf/">
+        <code>armhf</code></a> or <a href="https://hub.docker.com/u/aarch64/">
+        <code>aarch64</code></a> containers by Docker.
       </li>
       <li>
         If the right one is not available we try to rebuild them from the
@@ -69,14 +70,15 @@
   <h2>Features</h2>
   <dl>
     <dt>
-      Automated Builds for <code>armhf</code>
+      Automated Builds for <code>armhf</code> and <code>aarch64</code>
     </dt>
     <dd>
       <p>
-        For now marina.io builds containers for the architecture
-        <code>armhf</code>. That is the architecture the Raspberry Pi operating
-        systems are running on.
-        The images are built on our little Raspberry Pi farm.
+        For now marina.io builds containers for the architectures
+        <code>armhf</code> and <code>aarch64</code>. These are the architectures
+        the Raspberry Pi operating systems are running on.
+        <br>
+        The images are build on our little Raspberry Pi farm.
       </p>
     </dd>
     <dt>
@@ -116,7 +118,6 @@
       Only together can we make DevOps on ARM easier!
     </dd>
   </dl>
-  
   <h2>Get Started!</h2>
   <p>
     Simply <a href="/auth/register">register a free account</a> and follow
