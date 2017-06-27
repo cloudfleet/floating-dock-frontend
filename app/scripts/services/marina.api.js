@@ -17,7 +17,10 @@ angular.module('marinaFrontendApp')
 
         User: $resource(
           '/api/v1/users/:id',
-          {id:'@id'}
+          {id:'@id'},
+          {
+            generateApiKey: {method: 'POST', url: '/api/v1/users/:id/generate_api_key'}
+          }
         ),
 
         Organization: $resource(
@@ -25,7 +28,8 @@ angular.module('marinaFrontendApp')
           {id: '@id'},
           {
             addMember: {method: 'POST', url: '/api/v1/organizations/:id/add_user'},
-            removeMember: {method: 'DELETE', url: '/api/v1/organizations/:id/remove_user'}
+            removeMember: {method: 'DELETE', url: '/api/v1/organizations/:id/remove_user'},
+            generateApiKey: {method: 'POST', url: '/api/v1/organizations/:id/generate_api_key'}
           }
         ),
 

@@ -9,9 +9,14 @@
  */
 angular.module('marinaFrontendApp')
   .controller('OrganizationCtrl',
-  [ '$scope', '$stateParams', '$state', '$http', 'marinaApi', 'organization',
-    function ($scope, $stateParams, $state, $http, marinaApi, organization) {
+  [ '$scope', '$stateParams', '$state', '$http', '$location', 'marinaApi', 'organization',
+    function ($scope, $stateParams, $state, $http, $location, marinaApi, organization) {
       $scope.organization = organization;
+
+      $scope.web_hook_base_url =
+          $location.protocol() +
+          '://'+ $location.host() +
+          '/api/v1/api/v1/github/pushes';
 
       $scope.save = function()
       {
@@ -22,7 +27,17 @@ angular.module('marinaFrontendApp')
       };
 
       $scope.showApiKey = function() {
-        $scope.api_key = organization.api_key;
+        if(!organization.api_key)
+        {
+          marinaApi.Organization.generateApiKey({id: organization.id}).$promise.then(function() {
+            organization.$get().then(function(){
+              $scope.api_key = organization.api_key;
+            });
+          });
+        }
+        else {
+          $scope.api_key = organization.api_key;
+        }
       }
 
       $scope.hideApiKey = function() {
@@ -39,6 +54,7 @@ angular.module('marinaFrontendApp')
           return response.data;
         });
       };
+
 
       $scope.removeMember = function(member)
       {

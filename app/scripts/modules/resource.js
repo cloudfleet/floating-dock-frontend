@@ -1,3 +1,5 @@
+'use strict';
+
 var module = angular.module( 'rails.resource', [ 'ngResource' ] );
 
 module.factory( 'Resource', [ '$resource', function( $resource ) {

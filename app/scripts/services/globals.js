@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('marinaFrontendApp')
  .factory('globals', ['marinaApi', '$rootScope', '$q', '$http', '$uibModal',
     function ($resource, $rootScope, $q, $http, $uibModal) {
