@@ -17,7 +17,7 @@
 
     <li class="line dk"></li>
 
-    <li>
+    <li ng-if="user.name">
         <a ui-sref="app.repository_list({owner: user.name})">
             <img
               class="btn-icon"
