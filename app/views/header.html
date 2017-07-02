@@ -28,7 +28,17 @@
 
   <!-- nabar right -->
   <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown" ng-if="user">
+    <li ng-if="!user.name">
+      <a ui-sref="auth.login" class="clear" role="button">
+        <span>Sign In</span>
+      </a>
+    </li>
+    <li ng-if="!user.name">
+      <a ui-sref="auth.register" class="clear" role="button">
+        <span>Sign Up</span>
+      </a>
+    </li>
+    <li class="dropdown" ng-if="user.name">
       <a href class="dropdown-toggle clear" data-toggle="dropdown" role="button">
         <span>Create</span> <b class="caret"></b>
       </a>
@@ -43,7 +53,7 @@
       </ul>
       <!-- / dropdown -->
     </li>
-    <li class="dropdown" dropdown>
+    <li class="dropdown" ng-if="user.name">
       <a href class="dropdown-toggle clear" data-toggle="dropdown" role="button">
         <span>{{user.name}}</span> <b class="caret"></b>
       </a>
