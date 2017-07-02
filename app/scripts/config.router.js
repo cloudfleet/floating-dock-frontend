@@ -28,12 +28,7 @@ angular.module('marinaFrontendApp')
         .state('app', {
           abstract: true,
           url: '',
-          templateUrl: 'views/app.html',
-          resolve: {
-            auth: function($auth) {
-              return $auth.validateUser();
-            }
-          }
+          templateUrl: 'views/app.html'
         })
         .state('app.dashboard', {
           url: '/dashboard',
