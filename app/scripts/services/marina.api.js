@@ -77,7 +77,26 @@ angular.module('marinaFrontendApp')
               deferred.resolve(null);
             });
           return deferred.promise;
+        },
+
+        search: function (query) {
+          var deferred = $q.defer();
+
+          $http({
+            method: 'GET',
+            url: '/api/v1/search',
+            params: {q: query}
+          }).
+            success(function (data) {
+              deferred.resolve(data);
+            }).
+            error(function () {
+              deferred.resolve(null);
+            });
+          return deferred.promise;
         }
+
+
       };
       return service;
 

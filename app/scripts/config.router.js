@@ -42,6 +42,18 @@ angular.module('marinaFrontendApp')
             ]
           }
         })
+        .state('app.search', {
+          url: '/search?q',
+          templateUrl: 'views/app_search.html',
+          controller: 'SearchCtrl',
+          resolve: {
+            search_results: ['marinaApi', '$stateParams',
+              function(marinaApi, $stateParams) {
+                return marinaApi.search($stateParams.q);
+              }
+            ]
+          }
+        })
         .state('app.profile', {
           url: '/profile/:id',
           templateUrl: 'views/app_profile.html',
