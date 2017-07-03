@@ -30,7 +30,7 @@
                         </div>
                         <div class="list-group">
                           <a ng-repeat="object in search_results" class="list-group-item" ng-href="{{getLink(object)}}">
-                            {{object.name}}
+                            <i ng-class="getIconClass(object)"></i> {{getName(object)}}
                           </a>
                         </div>
                     </div>
