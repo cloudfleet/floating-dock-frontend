@@ -16,7 +16,7 @@ angular.module('marinaFrontendApp')
       $scope.web_hook_base_url =
           $location.protocol() +
           '://'+ $location.host() +
-          '/api/v1/api/v1/github/pushes';
+          '/api/v1/github/pushes';
 
       $scope.save = function()
       {
