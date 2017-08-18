@@ -14,6 +14,11 @@ angular.module('marinaFrontendApp')
       return moment(date).fromNow();
     };
   })
+  .filter('durationFromSeconds', function () {
+    return function (duration_seconds) {
+      return moment.duration(duration_seconds, 'seconds').humanize();
+    };
+  })
   .filter('statusBadgeClass', function () {
     return function (build) {
       if(build)

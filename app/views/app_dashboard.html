@@ -24,23 +24,126 @@
             <!-- info -->
             <div class="row">
 
-                <div class="col-md-6 p-l-xs p-r-xs" ng-repeat="(namespace, stats) in dashboard_data">
-                    <div class="panel b-a">
-                        <div class="panel-heading b-b b-light">
-                          <h2 class="panel-title"><a ui-sref='app.repository_list({owner: namespace})'>{{namespace}}</a></h2>
-                        </div>
-                        <div class="panel-body b-b b-light">
-                          <p>
-                            <p><strong>Builds</strong></p>
-                            <p>
-                                <span ng-repeat="(label, count) in stats.build_count">{{label}}: {{count}} &nbsp;</span>
-                            </p>
-                          <p>
-                        </div>
-                        <div class="panel-body b-b b-light">
-                        </div>
-                    </div>
-                </div>
+              <div class="col-md-6 p-l-xs p-r-xs" ng-if="dashboard_data.last_own_builds">
+                  <div class="panel b-a">
+                      <div class="panel-heading b-b b-light">
+                        <h2 class="panel-title">Your last builds</h2>
+                      </div>
+                      <table
+                        class="panel-body b-b b-light table table-striped"
+                        >
+                        <tr>
+                          <th>
+                            Repository
+                          </th>
+                          <th>
+                            Arch
+                          </th>
+                          <th>
+                            Tags
+                          </th>
+                          <th>
+                            State
+                          </th>
+                          <th>
+                            Last Updated
+                          </th>
+                          <th>
+                            Duration
+                          </th>
+                        </tr>
+                        <tr
+                          ng-repeat="build in dashboard_data.last_own_builds | orderBy:'updated_at':true"
+                          >
+                          <th>
+                            <a ui-sref="app.repository({owner: build.repository.owner_name, name: build.repository.name})">
+                              {{build.repository.owner_name}}/{{build.repository.name}}
+                            </a>
+                          </th>
+                          <td>
+                            {{build.architecture}}
+                          </td>
+                          <td>
+                            <span
+                              class="label label-info"
+                              style="display: block; margin-bottom: 2px"
+                              ng-repeat="build_tag in build.tags"
+                              >
+                              {{build_tag}}
+                            </span>
+                          </td>
+                          <td>
+                            <span
+                              class="label-{{build | statusBadgeClass}} label"
+                              >
+                              {{build.state}}
+                            </span>
+                          </td>
+                          <td>
+                            {{build.last_updated | fromNow}}
+                          </td>
+                          <td>
+                            {{build.duration | durationFromSeconds}}
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+              </div>
+              <div class="col-md-6 p-l-xs p-r-xs">
+                  <div class="panel b-a">
+                      <div class="panel-heading b-b b-light">
+                        <h2 class="panel-title">Last Pushed Repositories</h2>
+                      </div>
+                      <table
+                        class="panel-body b-b b-light table table-striped"
+                        >
+                        <tr>
+                          <th>
+                            Repository
+                          </th>
+                          <th>
+                            Arch
+                          </th>
+                          <th>
+                            Tags
+                          </th>
+                          <th>
+                            Pushed
+                          </th>
+                          <th>
+                            Duration
+                          </th>
+                        </tr>
+                        <tr
+                          ng-repeat="build in dashboard_data.last_global_successful_builds | orderBy:'updated_at':true"
+                          >
+                          <th>
+                            <a ui-sref="app.repository({owner: build.repository.owner_name, name: build.repository.name})">
+                              {{build.repository.owner_name}}/{{build.repository.name}}
+                            </a>
+                          </th>
+                          <td>
+                            {{build.architecture}}
+                          </td>
+                          <td>
+                            <span
+                              class="label label-info"
+                              style="display: block; margin-bottom: 2px"
+                              ng-repeat="build_tag in build.tags"
+                              >
+                              {{build_tag}}
+                            </span>
+                          </td>
+                          <td>
+                            {{build.pushed | fromNow}}
+                          </td>
+                          <td>
+                            {{build.duration | durationFromSeconds}}
+                          </td>
+                        </tr>
+                      </table>
+                  </div>
+              </div>
 
             </div>
             <!-- / info -->
