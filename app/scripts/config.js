@@ -14,6 +14,7 @@ angular.module('marinaFrontendApp')
             // lazy controller, directive and service
             $authProvider.configure({
               apiUrl: '/api/v1',
+              confirmationSuccessUrl:  '/dashboard',
               //passwordResetSuccessUrl: "/auth/update-password",
             });
             app.controller = $controllerProvider.register;
